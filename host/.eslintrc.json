@@ -1,0 +1,39 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": "ibbiz",
+    "globals": {
+        "localStorage": true,
+        "fetch": true,
+        "document": true,
+        "window": true,
+        "navigator": true,
+        "alert": true
+    },
+    "plugins": ["@typescript-eslint", "import"],
+    "rules": {
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "react/require-default-props": "off",
+        "@typescript-eslint/no-unused-vars": ["error"]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["./src"]
+            },
+            "typescript": {}
+        }
+    }
+}
