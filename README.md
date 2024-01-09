@@ -6,8 +6,8 @@ This repository contains a React micro frontend project consisting of a host and
 
 To run the micro frontend, follow these steps:
 
-1. `yarn install`, `yarn build`, then serve the build folder in port 3001
-2. `yarn install`, then `yarn dev` and the host will run on localhost port 8080
+1. Start the module1 by running `yarn install`, `yarn build`, then serve the build folder in port 3001
+2. Start the host by running `yarn install`, then `yarn dev` and the host will run on localhost port 8080
 
 The module1 will serve it's components in localhost:3001, the host will then fetch it's component to render it on the host
 
