@@ -6,8 +6,6 @@ const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const PACKAGE = require('./package.json');
 
 const remotes = {
-    module_counter: 'http://localhost:3001',
-    module_auth: 'http://localhost:3002',
     module_redux: 'http://localhost:9000'
 };
 
@@ -17,7 +15,10 @@ const federationConfig = {
     remotes: Object.fromEntries(
         Object.entries(remotes).map(([name, url]) => [name, `${name}@${url}/remoteEntry.js`])
     ),
-    exposes: {},
+    exposes: {
+        './Counter': './src/exposes/Counter',
+        './CounterRedux': './src/exposes/CounterRedux'
+    },
     shared: {
         ...PACKAGE.dependencies,
         react: {

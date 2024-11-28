@@ -5,19 +5,15 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const PACKAGE = require('./package.json');
 
-const remotes = {
-    module_counter: 'http://localhost:3001',
-    module_auth: 'http://localhost:3002',
-    module_redux: 'http://localhost:9000'
-};
-
 const federationConfig = {
     name: PACKAGE.name,
     filename: 'remoteEntry.js',
-    remotes: Object.fromEntries(
-        Object.entries(remotes).map(([name, url]) => [name, `${name}@${url}/remoteEntry.js`])
-    ),
-    exposes: {},
+    remotes: {},
+    exposes: {
+        './store': './src/exposes/store',
+        './counter': './src/exposes/counter',
+        './auth': './src/exposes/auth'
+    },
     shared: {
         ...PACKAGE.dependencies,
         react: {
