@@ -16,7 +16,9 @@ const federationConfig = {
         Object.entries(remotes).map(([name, url]) => [name, `${name}@${url}/remoteEntry.js`])
     ),
     exposes: {
-        './LoginButton': './src/exposes/LoginButton'
+        './LoginButton': './src/exposes/LoginButton',
+        './LoginPage': './src/exposes/LoginPage',
+        './i18n': './src/exposes/i18n'
     },
     shared: {
         ...PACKAGE.dependencies,

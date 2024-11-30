@@ -1,2 +1,2 @@
-export * from './_types/index';
-export { default } from './_types/index';
+export * from './_types/LoginButton/index';
+export { default } from './_types/LoginButton/index';

@@ -17,7 +17,8 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "paths": {
-      "components*": ["components/*"],
+      "components/*": ["components/*"],
+      "pages/*": ["pages/*"],
       "*": ["../@mf-types/*"]
     }
   },
