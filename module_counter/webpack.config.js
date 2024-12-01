@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -6,7 +7,7 @@ const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const PACKAGE = require('./package.json');
 
 const remotes = {
-    module_redux: 'http://localhost:9000'
+    module_redux: process.env.MODULE_REDUX_URL
 };
 
 const federationConfig = {
