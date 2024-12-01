@@ -52,7 +52,7 @@ const config = {
         plugins: [new TsconfigPathsPlugin()]
     },
     output: {
-        filename: `main.${PACKAGE.version}.js`,
+        filename: `main.${PACKAGE.version}.[hash].js`,
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
