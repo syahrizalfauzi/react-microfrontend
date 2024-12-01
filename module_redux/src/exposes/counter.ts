@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
+import createAppSlice from 'utils/createAppSlice';
 
-export const counterSlice = createSlice({
+export const counterSlice = createAppSlice({
     name: 'counter',
     initialState: {
         value: 0

@@ -1,2 +1,2 @@
-export * from './_types/auth';
-export { default } from './_types/auth';
+export * from './_types/exposes/auth';
+export { default } from './_types/exposes/auth';

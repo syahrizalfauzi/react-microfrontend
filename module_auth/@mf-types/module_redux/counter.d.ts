@@ -1,2 +1,2 @@
-export * from './_types/counter';
-export { default } from './_types/counter';
+export * from './_types/exposes/counter';
+export { default } from './_types/exposes/counter';

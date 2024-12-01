@@ -1,2 +1,2 @@
-export * from './_types/store';
-export { default } from './_types/store';
+export * from './_types/exposes/store';
+export { default } from './_types/exposes/store';
