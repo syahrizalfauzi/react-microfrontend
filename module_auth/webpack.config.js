@@ -5,21 +5,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const PACKAGE = require('./package.json');
-
-const remotes = {
-    module_redux: process.env.MODULE_REDUX_URL
-};
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 const federationConfig = {
     name: PACKAGE.name,
     filename: 'remoteEntry.js',
-    remotes: Object.fromEntries(
-        Object.entries(remotes).map(([name, url]) => [name, `${name}@${url}/remoteEntry.js`])
-    ),
+    remotes: {},
     exposes: {
+        './i18n': './src/exposes/i18n',
+        './store': './src/exposes/store',
         './LoginButton': './src/exposes/LoginButton',
-        './LoginPage': './src/exposes/LoginPage',
-        './i18n': './src/exposes/i18n'
+        './LoginPage': './src/exposes/LoginPage'
     },
     shared: {
         ...PACKAGE.dependencies,
@@ -67,6 +63,9 @@ const config = {
         new ModuleFederationPlugin(federationConfig),
         new FederatedTypesPlugin({
             federationConfig
+        }),
+        new ESLintWebpackPlugin({
+            extensions: ['js', 'jsx', 'ts', 'tsx']
         })
     ]
 };

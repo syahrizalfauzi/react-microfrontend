@@ -1,20 +1,19 @@
 import AuthStatus from 'components/AuthStatus';
 import HostCounter from 'components/HostCounter';
 import { Button } from 'ibbiz-react-component';
-import { persistor } from 'module_redux/store';
 import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LoginButton = React.lazy(() => import('module_auth/LoginButton'));
 const LoginPage = React.lazy(() => import('module_auth/LoginPage'));
 const Counter = React.lazy(() => import('module_counter/Counter'));
-const CounterRedux = React.lazy(() => import('module_counter/CounterRedux'));
+const CounterGlobal = React.lazy(() => import('module_counter/CounterGlobal'));
 
 const HomePage = () => {
     const { t } = useTranslation();
 
     const handleClickPurge = async () => {
-        await persistor.purge();
+        localStorage.clear();
         window.location.reload();
     };
 
@@ -30,12 +29,12 @@ const HomePage = () => {
             </Suspense>
 
             <h1>Redux</h1>
-            <p>HostCounter from host (with redux)</p>
+            <p>HostCounter from host (with global state)</p>
             <HostCounter />
 
-            <p>CounterRedux from module_counter (with redux)</p>
+            <p>CounterGlobal from module_counter (with global state)</p>
             <Suspense fallback={<p>loading CounterRedux</p>}>
-                <CounterRedux />
+                <CounterGlobal />
             </Suspense>
 
             <p>LoginButton from module_auth</p>
@@ -43,10 +42,9 @@ const HomePage = () => {
                 <LoginButton />
             </Suspense>
 
-            <p>AuthStatus from host w redux</p>
+            <p>AuthStatus from host w global state</p>
             <AuthStatus />
 
-            <p>counter is blacklisted by persistor, auth is not</p>
             <Button onClick={handleClickPurge}>purge persistor</Button>
 
             <h1>Translation</h1>

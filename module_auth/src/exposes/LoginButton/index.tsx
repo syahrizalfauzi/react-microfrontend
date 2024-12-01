@@ -1,27 +1,22 @@
-import { useAppDispatch, useAppSelector } from 'module_redux/store';
-import { authSlice } from 'module_redux/auth';
 import { Button } from 'ibbiz-react-component';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { isFulfilled } from '@reduxjs/toolkit';
+import { useAuthStore } from 'exposes/store';
 
 const LoginButton = () => {
     const { t } = useTranslation();
-    const auth = useAppSelector(state => state.auth.auth);
-    const dispatch = useAppDispatch();
+    const { auth, login, logout } = useAuthStore();
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClick = async () => {
         if (auth) {
-            dispatch(authSlice.actions.logout());
+            logout();
             return;
         }
 
         setIsLoading(true);
-        const result = await dispatch(authSlice.actions.login('usernamehere'));
-        if (isFulfilled(result)) {
-            alert(`logged in as ${result.payload?.username}, locale = ${result.payload?.locale}`);
-        }
+        const result = await login('usernamehere');
+        alert(`logged in as ${result?.username}, locale = ${result?.locale}`);
         setIsLoading(false);
     };
 

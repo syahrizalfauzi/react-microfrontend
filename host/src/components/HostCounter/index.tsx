@@ -1,17 +1,15 @@
-import { useAppDispatch, useAppSelector } from 'module_redux/store';
-import { counterSlice } from 'module_redux/counter';
+import { useCounterStore } from 'module_counter/store';
 
 const HostCounter = () => {
-    const value = useAppSelector(state => state.counter.value);
-    const dispatch = useAppDispatch();
+    const { decrement, value, increment } = useCounterStore();
 
     return (
         <div>
-            <button type="button" onClick={() => dispatch(counterSlice.actions.decrement())}>
+            <button type="button" onClick={decrement}>
                 decrement
             </button>
             <span>{value}</span>
-            <button type="button" onClick={() => dispatch(counterSlice.actions.increment())}>
+            <button type="button" onClick={increment}>
                 increment
             </button>
         </div>

@@ -7,7 +7,6 @@ const { FederatedTypesPlugin } = require('@module-federation/typescript');
 const PACKAGE = require('./package.json');
 
 const remotes = {
-    module_redux: process.env.MODULE_REDUX_URL,
     module_counter: process.env.MODULE_COUNTER_URL,
     module_auth: process.env.MODULE_AUTH_URL
 };

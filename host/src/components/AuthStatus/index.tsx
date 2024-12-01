@@ -1,7 +1,7 @@
-import { useAppSelector } from 'module_redux/store';
+import { useAuthStore } from 'module_auth/store';
 
 const AuthStatus = () => {
-    const auth = useAppSelector(state => state.auth.auth);
+    const { auth } = useAuthStore();
 
     if (!auth?.username) {
         return <p>Not logged in</p>;
