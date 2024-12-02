@@ -1,7 +1,7 @@
 import { useCounterStore } from 'exposes/store';
 import React from 'react';
 
-const CounterRedux: React.FC = () => {
+const CounterGlobal: React.FC = () => {
     const { value, increment, decrement } = useCounterStore();
 
     return (
@@ -17,4 +17,4 @@ const CounterRedux: React.FC = () => {
     );
 };
 
-export default CounterRedux;
+export default CounterGlobal;
