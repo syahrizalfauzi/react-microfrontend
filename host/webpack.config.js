@@ -55,6 +55,9 @@ const config = {
         filename: `main.${PACKAGE.version}.[hash].js`,
         path: path.resolve(__dirname, 'build')
     },
+    devServer: {
+        historyApiFallback: true
+    },
     plugins: [
         new HtmlWebpackPlugin({
             chunks: ['main'],

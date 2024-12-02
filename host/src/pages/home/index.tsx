@@ -3,22 +3,28 @@ import HostCounter from 'components/HostCounter';
 import { Button } from 'ibbiz-react-component';
 import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 const LoginButton = React.lazy(() => import('module_auth/LoginButton'));
-const LoginPage = React.lazy(() => import('module_auth/LoginPage'));
 const Counter = React.lazy(() => import('module_counter/Counter'));
 const CounterGlobal = React.lazy(() => import('module_counter/CounterGlobal'));
 
 const HomePage = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const handleClickPurge = async () => {
         localStorage.clear();
         window.location.reload();
     };
 
+    const handleClickLogin = () => {
+        navigate('/login');
+    };
+
     return (
         <>
+            <Button onClick={handleClickLogin}>go to login page</Button>
             <h1>Package Sharing</h1>
             <p>Button from ibbiz-react-component (package from host)</p>
             <Button>Button</Button>
@@ -49,9 +55,6 @@ const HomePage = () => {
 
             <h1>Translation</h1>
             <p>{t('host:example')}</p>
-            <Suspense fallback={<p>loading LoginPage</p>}>
-                <LoginPage />
-            </Suspense>
         </>
     );
 };
